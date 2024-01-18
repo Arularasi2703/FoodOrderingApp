@@ -1,0 +1,49 @@
+
+<div class="filter-container">
+    <!-- <button (click)="filterItems('All')" class="menu-button">All</button>
+    <button *ngFor="let category of foodCategories" (click)="filterItems(category.name)" class="menu-button">
+      {{ category.name }}
+    </button> -->
+    <button (click)="filterItems('All')" 
+          [ngClass]="{ 'selected-category': selectedCategory === 'All' }" 
+          class="menu-button">All</button>
+  <button *ngFor="let category of foodCategories" 
+          (click)="filterItems(category.name)" 
+          [ngClass]="{ 'selected-category': selectedCategory === category.name }" 
+          class="menu-button">
+    {{ category.name }}
+  </button>
+  </div>
+  
+  <div *ngIf="foodCategories.length > 0" class="menu-container">
+    <h1 class="menu-title">Our Menu</h1>
+    <h2 class="menu-subtitle">Eat fresh &amp; healthy</h2>
+    <br>
+  
+    <div class="food-item-container">
+      <div *ngFor="let category of foodCategories" class="category-item">
+        <div class="food-items">
+          <div *ngFor="let foodItem of category.items | categoryFilter: selectedCategory || 'All'" class="food-item">
+            <div class="food-item-inner">
+              <div class="food-item-image">
+                <img [src]="getBase64Image(foodItem.imageUrl)" alt="Food Item Image">
+  
+              </div>
+              <div class="food-item-details">
+                <h5 class="food-item-name">{{ foodItem.name }}</h5>
+                <div class="food-item-description">{{foodItem.description}}</div>
+                <div class="food-item-price">{{ foodItem.price | currency: 'INR' }}</div>
+               
+                <button class="add-to-cart-button"(click)="addToCart(foodItem)" >Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+                <!-- <img [src]="'/assets/image/' + foodItem.imageUrl" alt="Food Item Image"> -->
+   <!-- <p style="margin-top: 80px;">{{ foodItem.price | currency: 'INR' }}</p> -->
+  
+                <!-- <button class="add-to-cart-button" (click)="addToCart(foodItem)" [disabled]="!isLoggedIn()">Add to Cart</button> -->

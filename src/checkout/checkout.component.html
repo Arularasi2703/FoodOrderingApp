@@ -1,0 +1,88 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="error-message" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+<!-- <div class="error-message" *ngIf="checkoutForm.invalid && checkoutForm.dirty || checkoutForm.touched">
+  Please fill out all required fields correctly before submitting.
+</div> -->
+<h1 style="text-align: center;">Checkout</h1>
+
+<div class="form-container" *ngIf="!orderSummary && !paymentStatus">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" formControlName="name" placeholder="Enter your name">
+      <div class="error-message" *ngIf="checkoutForm.get('name')?.invalid && checkoutForm.get('name')?.touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          <div *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required</div>
+          <div *ngIf="checkoutForm.get('name')?.hasError('pattern')">Please enter your Firstname Lastname</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- <div class="error-message" *ngIf="signupForm.controls['name'].hasError('minlength') && signupForm.controls['name'].touched">
+      <div class="error-container">
+        <span class="error-icon">error</span>
+        Name should have at least 5 characters.
+      </div>
+    </div> -->
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" formControlName="email" placeholder="Enter your email">
+      <div class="error-message" *ngIf="checkoutForm.get('email')?.invalid && checkoutForm.get('email')?.touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          <div *ngIf="checkoutForm.get('email')?.hasError('required')">Email is required</div>
+          <div *ngIf="checkoutForm.get('email')?.hasError('pattern')">Please enter a valid email address</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div>
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" id="mobileNumber" name="mobileNumber" formControlName="mobileNumber" placeholder="Enter your mobile number">
+      <div class="error-message" *ngIf="checkoutForm.get('mobileNumber')?.invalid && checkoutForm.get('mobileNumber')?.touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          <div *ngIf="checkoutForm.get('mobileNumber')?.hasError('required')">Mobile number is required</div>
+          <div *ngIf="checkoutForm.get('mobileNumber')?.hasError('pattern')">Please enter a valid mobile number +91XXXXXXXXXX</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" formControlName="address" placeholder="Enter your address"></textarea>
+      <div class="error-message" *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          <div *ngIf="checkoutForm.get('address')?.hasError('required')">Address is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="pinCode">Pin Code:</label>
+      <input type="text" id="pinCode" name="pinCode" formControlName="pinCode" placeholder="Enter your pin code">
+      <div class="error-message" *ngIf="checkoutForm.get('pinCode')?.invalid && checkoutForm.get('pinCode')?.touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          <div *ngIf="checkoutForm.get('pinCode')?.hasError('required')">Pin code is required</div>
+          <div *ngIf="checkoutForm.get('pinCode')?.hasError('pattern')">Please enter a 6 digit pincode</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" >Submit</button>
+    </div>
+
+    
+  </form>
+</div>
+
+

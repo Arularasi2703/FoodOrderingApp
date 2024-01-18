@@ -1,0 +1,98 @@
+<h1 style="text-align: center;">Sign Up</h1>
+
+<div class="form-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" formControlName="name" placeholder="Enter your Firstname Lastname" [ngClass]="{ 'invalid': signupForm.controls['name'].invalid && signupForm.controls['name'].touched }">
+
+      <div class="error-message" *ngIf="signupForm.controls['name'].hasError('required') && signupForm.controls['name'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Name is required.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['name'].hasError('pattern') && signupForm.controls['name'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Please enter the Firstname Lastname
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['name'].hasError('minlength') && signupForm.controls['name'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Name should have at least 5 characters.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['name'].hasError('maxlength') && signupForm.controls['name'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Name cannot exceed 50 characters.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" formControlName="email" [ngClass]="{ 'invalid': signupForm.controls['email'].invalid && signupForm.controls['email'].touched }" placeholder="Enter your email address">
+
+      <div class="error-message" *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Email is required.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['email'].hasError('pattern') && signupForm.controls['email'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Invalid email format.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['email'].hasError('emailTaken') && signupForm.controls['email'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Email is already registered.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" formControlName="password" [ngClass]="{ 'invalid': signupForm.controls['password'].invalid && signupForm.controls['password'].touched }" placeholder="Enter a strong password">
+      <div class="error-message" *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Password is required.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['password'].hasError('pattern') && signupForm.controls['password'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Invalid password format. Use 6 or more characters with a mix of letters, numbers & symbols.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" placeholder="Re-enter your password" name="confirmPassword" formControlName="confirmPassword" [ngClass]="{ 'invalid': signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched }">
+      <div class="error-message" *ngIf="signupForm.controls['confirmPassword'].hasError('required') && signupForm.controls['confirmPassword'].touched" >
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Confirm Password is required.
+        </div>
+      </div>
+      <div class="error-message" *ngIf="signupForm.controls['confirmPassword'].hasError('passwordsNotMatched') && signupForm.controls['confirmPassword'].touched">
+        <div class="error-container">
+          <span class="error-icon">error</span>
+          Passwords does not match.
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" >Submit</button>
+      <!-- <button type="submit" [disabled]="signupForm.invalid">Submit</button> -->
+
+    </div>
+  </form>
+  <div class="login-link">
+    Already registered?<a href="/login" class="login-btn"> Login here</a>
+  </div>
+</div>

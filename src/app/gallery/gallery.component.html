@@ -1,0 +1,21 @@
+<div class="gallery">
+    <div *ngIf="galleryItems.length > 0" class="gallery-items">
+      <div *ngFor="let item of galleryItems" class="gallery-item">
+        <!-- Display each gallery item -->
+        <div class="item-details">
+          <img [src]="getBase64Image(item.imageUrl)" alt="Food Item Image" height="250px" width="350px">
+          <h3>{{ item.name }}</h3>
+          <p class="item-description">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="galleryItems.length === 0" class="no-items">
+      <!-- Message when there are no gallery items -->
+      <p>No items available in the menu.</p>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- <img [src]="getBase64Image(item.imageUrl)" alt="Food Item Image"> -->

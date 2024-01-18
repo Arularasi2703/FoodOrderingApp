@@ -1,0 +1,94 @@
+<div *ngIf="cartItems.length === 0; else cartNotEmpty" class="empty-cart">
+    <h2>Cart is empty</h2>
+  </div>
+  
+  <ng-template #cartNotEmpty>
+    <div class="cart-container">
+      <h2 class="cart-title">Cart</h2>
+      <div class="cart-items">
+        <div *ngFor="let cartItem of cartItems" class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-image">
+              <img [src]="getBase64Image(cartItem.imageUrl)" [alt]="cartItem.name">
+            </div>
+            <div class="cart-item-details">
+              <h3 class="cart-item-name">{{ cartItem.name }}</h3>
+              <div class="cart-item-price">{{ cartItem.price | currency: 'INR' }}</div> <!-- Change 'p' to 'div' -->
+              <div class="cart-item-quantity">
+                <button (click)="decrementQuantity(cartItem)" class="quantity-button">-</button>
+                <span class="quantity">{{ cartItem.quantity || 0 }}</span>
+                <button (click)="incrementQuantity(cartItem)" class="quantity-button">+</button>
+              </div>
+            </div>
+          </div>
+          <button (click)="removeItem(cartItem)" class="remove-button">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <div class="total-amount-container">
+          <span class="total-amount-label">Total Amount:</span>
+          <span class="amount">{{ getTotalBill()| currency: 'INR' }}</span>
+        </div>
+        <button (click)="goToCheckout()" class="checkout-button">Checkout</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
